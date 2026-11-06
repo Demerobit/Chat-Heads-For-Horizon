@@ -1,0 +1,54 @@
+# Draft of the registry entry (mods/chat_heads_rust.toml in horizon-rust/horizon-mods).
+# The submit form at playhorizon.dev/mods/submit writes this and opens the pull request.
+
+id = "chat_heads_rust"
+kind = "native-mod"
+name = "Chat Heads Rust"
+summary = "A player's head right before their name on every chat line they wrote. Microsoft and cracked players alike."
+description = """
+A chat-heads native mod for Horizon, built from the behaviour of dzwdz's Chat Heads and
+Domanffe's Horizon port; no Java code and no original assets.
+
+The sender is read from the chat line's own <Name> prefix, which offline-mode (cracked)
+servers write exactly like online ones, so no account, signature or UUID is needed. The
+skin is whatever the game resolved from its tab list (Microsoft or cracked); the hat layer
+is drawn over the face, so hair and headwear show. A player with no resolved skin keeps a
+steady default Steve/Alex; a line the atlas cannot cover stays bare.
+
+Settings in Options > Mods: heads on/off, your own head on/off (the game's own name, or
+/chatheads me <name> to override).
+
+Native source mod: install it on the launcher's Mods page, press Build there and confirm the
+native-code warning. Hook points API 2 (named hooks) plus the chat's draw/lay-out targets,
+pinned to Horizon 4aa6854 and horizon-mixins a2af5c0.
+"""
+authors = ["Demerobit"]
+owners = ["Demerobit"]
+license = "MIT"
+source = "https://github.com/Demerobit/Chat-Heads-Rust"
+icon = "icons/chat_heads_rust.png"
+
+[[versions]]
+version = "1.0.2"
+published = 2026-11-06
+game = "26.3"
+file = "chat_heads_rust-1.0.2.hnmod"
+sha256 = "b4dd7f7b8e5689dc0718821d7926ff3e3c9107fc11737903c195aed19c6cb7a1"
+changelog = """
+Multiplayer fix: senders are now matched against the client's tab/player list
+(ranks, nicknames, prefixes and colour codes are stripped first; bare
+`Name:` / `Name >` server formats are recognised), so heads show on servers
+that reformat chat. Skins come from the player-list texture data the server
+already sent - no Mojang lookup, works on offline-mode (cracked) servers.
+Lines drawn before a player's skin downloads show a steady default skin and
+switch to the real face the next frame. Your own echoed lines are hidden
+unless 'Show your own head' is on.
+"""
+
+[[versions]]
+version = "1.0.1"
+published = "2026-11-05"
+game = "26.3"
+file = "chat_heads_rust-1.0.1.hnmod"
+sha256 = "102bcf1d93f53fbc3c2bb7cbe576d7fa3d38fcfaf653be65a64931c392820322"
+changelog = "The hat layer is drawn over the face (hair and headwear show); skins resolve automatically from the game's own tab list for Microsoft and cracked players alike, with the steady default as the fallback - the Default skins option is gone; Show your own head reads the game's name every frame, so it works without /chatheads me."

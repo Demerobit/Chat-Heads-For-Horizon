@@ -1,0 +1,11 @@
+[package]
+name = "horizon-mod-chat-heads-rust"
+version = "1.0.2"
+edition = "2024"
+license = "MIT"
+publish = false
+description = "Chat Heads Rust: a player's head before their name in chat, a native mod for Horizon."
+
+# This exact source is also injected as a same-crate module by horizon-mixins.
+[lib]
+path = "mixins/chat_heads_rust/runtime.rs"
